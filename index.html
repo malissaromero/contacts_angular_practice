@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="contactsApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="controllers/main.js"></script>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <h1>Contacts</h1>
+
+  <!-- create functionality-->
+  <div ng-controller="mainController as mainCtrl" class="list">
+    <div class="add">
+      <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
+      <form ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.create()">
+        <label>Name</label>
+        <input placeholder="Enter Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
+
+        <label>Phone Number</label>
+        <input placeholder="Enter Phone Number" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
+
+        <button class="new">New Contact</button>
+      </form>
+    </div>
+
+    <!-- edit, update and delete functionality -->
+    <div class="item" ng-repeat="contact in mainCtrl.contacts">
+      <!-- | orderBy:'-name': true -->
+
+      <!-- show data -->
+      <div ng-show=!editContact>
+        <label ng-show="!editContact">{{contact.name}}</label>
+        <label ng-show="!editContact">{{contact.phoneNumber}}
+        </label>
+      </div>
+
+      <!-- form for editing -->
+      <form ng-show="editContact">
+        <input ng-model="mainCtrl.name" class="editing-label" type="text"/>
+
+        <input ng-model="mainCtrl.phoneNumber" class="editing-label" type="text"/>
+      </form>
+
+        <!-- edit, save and delete buttons -->
+      <div class="actions">
+        <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
+        <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
+        <a href="" class="delete" ng-click="mainCtrl.delete($index)">Delete</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!-- <div class="item" ng-class="{'editing-item': editing}" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name'">
+   <input ng-model="contact.completed" type="checkbox"/>
+  <label ng-hide="editing">{{contact.name}}</label>
+  <label ng-hide="editing">{{contact.phoneNumber}}</label>
+  <input ng-change="contact.edited = true" ng-show="editing" ng-model="mainCtrl.name" class="editing-label" type="text"/>
+  <input ng-change="contact.edited = true" ng-show="editing" ng-model="mainCtrl.phoneNumber" class="editing-label" type="text"/>
+
+  <div class="actions">
+    <a href="" ng-click="mainCtrl.edit($index)">Edit</a>
+    <a href="" ng-click="mainCtrl.update($index)">Save</a>
+    <a href="" ng-click="mainCtrl.delete($index)" class="delete">Delete</a>
+  </div>
+</div> -->
