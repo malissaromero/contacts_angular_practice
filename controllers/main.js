@@ -1,6 +1,5 @@
-(function() {
-  app = angular.module("contactsApp", [])
-  app.controller("mainController", function() {
+angular.module("contactsApp", [])
+.controller("mainController", function() {
 
   this.contacts = [
     {"id": "0", "name":"Carson Daly", "phoneNumber":"000-000-0000"},
@@ -65,4 +64,3 @@
   };
 
 });
-})();

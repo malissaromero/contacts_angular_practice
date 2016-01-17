@@ -1,9 +1,9 @@
-'use strict';
-
-(function() {
-  console.log("KDKKDKDKKDK")
-  var app = angular.module('contactsApp', [
-    'mainController'
-
-  ])
-})()
+// 'use strict';
+//
+// (function() {
+//   console.log("KDKKDKDKKDK")
+//   var app = angular.module('contactsApp', [
+//     'mainController'
+//
+//   ])
+// })()
