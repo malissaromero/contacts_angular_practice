@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Contacts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
   <script src="scripts/app.js"></script>
@@ -10,8 +11,8 @@
   <link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-  <h1>Contacts</h1>
+  <h1>Your Virtual PhoneBook</h1>
+  <p>Store your contacts, create new ones and more.</p>
 
   <!-- create functionality-->
   <div ng-controller="mainController as mainCtrl" class="list">
@@ -24,7 +25,7 @@
         <label>Phone Number</label>
         <input placeholder="Enter Phone Number" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
 
-        <button class="new">New Contact</button>
+        <button class="btn btn-default" type="submit">Submit</button>
       </form>
     </div>
 
@@ -33,7 +34,7 @@
       <!-- | orderBy:'-name': true -->
 
       <!-- show data -->
-      <div ng-show=!editContact>
+      <div class="contacts" ng-show=!editContact>
         <label ng-show="!editContact">{{contact.name}}</label>
         <label ng-show="!editContact">{{contact.phoneNumber}}
         </label>
@@ -41,9 +42,9 @@
 
       <!-- form for editing -->
       <form ng-show="editContact">
-        <input ng-model="mainCtrl.name" class="editing-label" type="text"/>
+        <input ng-model="contact.name" class="editing-label" type="text"/>
 
-        <input ng-model="mainCtrl.phoneNumber" class="editing-label" type="text"/>
+        <input ng-model="contact.phoneNumber" class="editing-label" type="text"/>
       </form>
 
         <!-- edit, save and delete buttons -->

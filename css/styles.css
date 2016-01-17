@@ -24,8 +24,9 @@ a:hover {
   width: 80%;
   min-width: 500px;
   margin: 80px auto 0;
-  border-top: 40px solid #5a6772;
+  border-bottom: 20px solid #5a6772;
   text-align: left;
+  margin-bottom: 40px;
 }
 
 .list .item {
@@ -97,3 +98,5 @@ input.createInput {
   padding: 15px 0 15px 10px;
   width: 60%;
 }
+
+@media
