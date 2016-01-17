@@ -1,5 +1,6 @@
-angular.module("contactsApp", [])
-.controller("mainController", function() {
+(function() {
+  app = angular.module("contactsApp", [])
+  app.controller("mainController", function() {
 
   this.contacts = [
     {"id": "0", "name":"Carson Daly", "phoneNumber":"000-000-0000"},
@@ -9,6 +10,31 @@ angular.module("contactsApp", [])
     {"id": "4", "name":"Gary Oldman", "phoneNumber":"000-000-0000"},
     {"id": "5", "name":"Aaron Carter", "phoneNumber":"000-000-0000"}
   ]
+
+  this.formIsVisible = false
+  this.toggleForm = function() {
+    console.log("toggleform")
+    if(this.formIsVisible){
+      this.formIsVisible = false
+    }
+    else {
+      this.formIsVisible = true
+    }
+  }
+
+  this.reset = function(){
+    this.name = ""
+    this.phoneNumber = ""
+  }
+
+  this.create = function() {
+    console.log("clicked")
+    this.contacts.unshift({
+      name: this.name,
+      phoneNumber: this.phoneNumber
+    });
+    this.reset()
+  };
 
   this.edit = function(index) {
     var contact = this.contacts[index];
@@ -38,33 +64,5 @@ angular.module("contactsApp", [])
     this.contacts.splice(index, 1);
   };
 
-})
-.controller("secondController", function($scope) {
-  console.log("second controller")
-
-  this.formIsVisible = false
-  this.toggleForm = function() {
-    console.log("toggleform")
-    if(this.formIsVisible){
-      this.formIsVisible = false
-    }
-    else {
-      this.formIsVisible = true
-    }
-  }
-
-  this.reset = function(){
-    this.name = ""
-    this.phoneNumber = ""
-  }
-
-  this.create = function() {
-    console.log("create clicked")
-    this.contacts.unshift({
-      name: this.name,
-      phoneNumber: this.phoneNumber
-    });
-    this.reset()
-  };
-
 });
+})();
