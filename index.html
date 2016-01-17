@@ -30,7 +30,7 @@
     </div>
 
     <!-- edit, update and delete functionality -->
-    <div class="item" ng-repeat="contact in mainCtrl.contacts">
+    <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts">
       <!-- | orderBy:'-name': true -->
 
       <!-- show data -->
@@ -51,7 +51,7 @@
       <div class="actions">
         <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
         <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
-        <a href="" class="delete" ng-click="mainCtrl.delete($index)">Delete</a>
+        <a href="" class="delete" ng-click="mainCtrl.delete($index);">Delete</a>
       </div>
     </div>
   </div>

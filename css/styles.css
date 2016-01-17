@@ -49,6 +49,10 @@ a:hover {
   /*width: 60%; */
 }
 
+/*.list .item .editing-label .actions {
+  padding: 15px 0 15px 10px;
+}*/
+
 .list .item .actions {
   float: right;
   margin-right: 20px;
@@ -67,8 +71,8 @@ a:hover {
   color: #f28888;
 }
 
-.list .item .editing-item .actions {
-  margin-top: 17px;
+.list .item.editing-item .actions {
+  margin-top: -34px;
 }
 
 .list .edited label:after {
@@ -98,5 +102,3 @@ input.createInput {
   padding: 15px 0 15px 10px;
   width: 60%;
 }
-
-@media

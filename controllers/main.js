@@ -36,6 +36,7 @@ angular.module("contactsApp", [])
   };
 
   this.edit = function(index) {
+    this.formIsVisible = false
     var contact = this.contacts[index];
       this.name = contact.name;
       this.phoneNumber = contact.phoneNumber;
@@ -46,6 +47,7 @@ angular.module("contactsApp", [])
       contact.name = this.name;
       contact.phoneNumber = this.phoneNumber;
   };
+
 
   // this.delete = function(contact) {
   //   //loop through the objects and find the id that I just deleted
