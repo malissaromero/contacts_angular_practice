@@ -22,7 +22,6 @@ a:hover {
 .list {
   background: #fff;
   width: 80%;
-  min-width: 500px;
   margin: 80px auto 0;
   border-bottom: 20px solid #5a6772;
   text-align: left;
@@ -49,15 +48,6 @@ a:hover {
   /*width: 60%; */
 }
 
-/*.list .item .editing-label .actions {
-  padding: 15px 0 15px 10px;
-}*/
-
-.list .item .actions {
-  float: right;
-  margin-right: 20px;
-}
-
 .list .item .actions .delete {
   color: #ed5a5a;
   margin-left: 10px;
@@ -69,10 +59,6 @@ a:hover {
 
 .list .item .actions .delete:hover {
   color: #f28888;
-}
-
-.list .item.editing-item .actions {
-  margin-top: -34px;
 }
 
 .list .edited label:after {
@@ -101,4 +87,62 @@ input.createInput {
   font-size: 16px;
   padding: 15px 0 15px 10px;
   width: 60%;
+}
+
+@media screen and (min-width: 500px) {
+  .list {
+    min-width: 500px;
+  }
+
+  .list .item .actions {
+    float: right;
+    margin-right: 20px;
+  }
+
+  .list .item.editing-item .actions {
+    margin-top: -34px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .list .item.editing-item .actions {
+    float: left;
+    margin-top: 0px;
+    margin-left: 6px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .list {
+    text-align: center;
+  }
+
+  .add {
+    text-align: center;
+  }
+
+  input.createInput {
+    margin: auto;
+  }
+
+  .list .item .actions {
+    text-align: center;
+  }
+
+  .list .item .editing-label {
+    margin-bottom: 5px
+  }
+
+  .list .item.editing-item .actions {
+    float: none;
+  }
+
+  label {
+    margin-top: 5px;
+    text-align: left;
+  }
+
+  button {
+    margin-top: 5px;
+  }
 }

@@ -20,10 +20,10 @@
       <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
       <form ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.create()">
         <label>Name</label>
-        <input placeholder="Enter Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
+        <input placeholder="Enter First and Last Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
 
         <label>Phone Number</label>
-        <input placeholder="Enter Phone Number" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
+        <input placeholder="(XXX)XXX-XXXX" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber" ng-minlength="10">
 
         <button class="btn btn-default" type="submit">Submit</button>
       </form>
