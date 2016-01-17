@@ -39,7 +39,7 @@ angular.module("contactsApp", [])
   };
 
 })
-.controller("secondController", function() {
+.controller("secondController", function($scope) {
   console.log("second controller")
 
   this.formIsVisible = false
@@ -58,7 +58,7 @@ angular.module("contactsApp", [])
     this.phoneNumber = ""
   }
 
-  this.create = function(contact) {
+  this.create = function() {
     console.log("create clicked")
     this.contacts.unshift({
       name: this.name,
