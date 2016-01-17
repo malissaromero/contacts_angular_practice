@@ -16,29 +16,6 @@
 
   <!-- create functionality-->
   <div ng-controller="mainController as mainCtrl" class="list">
-    <div class="add">
-      <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
-      <form ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.create()">
-        <label>Name</label>
-        <input placeholder="Enter Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
-
-        <label>Phone Number</label>
-        <input placeholder="Enter Phone Number" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
-
-        <button class="btn btn-default" type="submit">Submit</button>
-      </form>
-    </div>
-
-    <!-- edit, update and delete functionality -->
-    <div class="item" ng-repeat="contact in mainCtrl.contacts">
-      <!-- | orderBy:'-name': true -->
-
-      <!-- show data -->
-      <div class="contacts" ng-show=!editContact>
-        <label ng-show="!editContact">{{contact.name}}</label>
-        <label ng-show="!editContact">{{contact.phoneNumber}}
-        </label>
-      </div>
 
       <!-- form for editing -->
       <form ng-show="editContact">
@@ -47,13 +24,42 @@
         <input ng-model="contact.phoneNumber" class="editing-label" type="text"/>
       </form>
 
-        <!-- edit, save and delete buttons -->
+      <!-- edit, save and delete buttons -->
       <div class="actions">
         <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
         <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
         <a href="" class="delete" ng-click="mainCtrl.delete($index)">Delete</a>
       </div>
+
+<!-- ////////////////////////////////////////////////////////////////////// -->
+    <div ng-controller="secondController as sndCtrl">
+
+      <div class="add">
+        <a href="" ng-click="sndCtrl.toggleForm()">+ Add a New Contact</a>
+        <form ng-show="sndCtrl.formIsVisible" ng-submit="sndCtrl.create()">
+          <label>Name</label>
+          <input placeholder="Enter Name" class="createInput" type="text" name="name" ng-model="sndCtrl.name">
+
+          <label>Phone Number</label>
+          <input placeholder="Enter Phone Number" class="createInput" type="text" name="phoneNumber" ng-model="sndCtrl.phoneNumber">
+
+          <button class="btn btn-default" type="submit">Submit</button>
+        </form>
+      </div>
+
+      <!-- edit, update and delete functionality -->
+      <div class="item" ng-repeat="contact in mainCtrl.contacts">
+        <!-- | orderBy:'-name': true -->
+
+        <!-- show data -->
+        <div class="contacts" ng-show=!editContact>
+          <label ng-show="!editContact">{{contact.name}}</label>
+          <label ng-show="!editContact">{{contact.phoneNumber}}</label>
+        </div>
+      </div>
+
     </div>
+
   </div>
 
 </body>
