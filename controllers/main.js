@@ -66,10 +66,13 @@ angular.module("contactsApp", [])
   //   this.reset()
   // };
 
-  this.delete = function(index){
+  this.delete = function(index) {
     console.log("whats up")
     // console.log(index)
     this.contacts.splice(index, 1);
   };
+
+  // this.favorited = function(index) {
+  // }
 
 });
