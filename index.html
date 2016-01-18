@@ -22,9 +22,6 @@
     <div class="add">
       <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
 
-        <label>Phone Number</label>
-        <input placeholder="(XXX)XXX-XXXX" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
-
       <form name="createForm" ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.submitForm(createForm.$valid)" novalidate>
 
         <!-- name -->
@@ -85,10 +82,11 @@
   <label ng-hide="editing">{{contact.phoneNumber}}</label>
   <input ng-change="contact.edited = true" ng-show="editing" ng-model="mainCtrl.name" class="editing-label" type="text"/>
   <input ng-change="contact.edited = true" ng-show="editing" ng-model="mainCtrl.phoneNumber" class="editing-label" type="text"/>
-
   <div class="actions">
     <a href="" ng-click="mainCtrl.edit($index)">Edit</a>
     <a href="" ng-click="mainCtrl.update($index)">Save</a>
     <a href="" ng-click="mainCtrl.delete($index)" class="delete">Delete</a>
   </div>
 </div> -->
+Status API Training Shop Blog About Pricing
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
