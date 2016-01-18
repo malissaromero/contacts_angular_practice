@@ -18,14 +18,26 @@
   <div ng-controller="mainController as mainCtrl" class="list">
     <div class="add">
       <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
-      <form ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.create()">
-        <label>Name</label>
-        <input placeholder="Enter First and Last Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
 
-        <label>Phone Number</label>
-        <input placeholder="(XXX)XXX-XXXX" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber" ng-minlength="10">
+      <form name="createForm" ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.submitForm(createForm.$valid)" novalidate>
+      <!-- ng-submit="mainCtrl.create()" -->
 
-        <button class="btn btn-default" type="submit">Submit</button>
+        <!-- name -->
+        <div class="form-group" ng-class="{'has-error' : createForm.name.$invalid && !createForm.name.$pristine}">
+          <label>Name</label>
+          <input placeholder="Enter First and Last Name" class="form-control" type="text" name="name" ng-model="mainCtrl.name" required>
+          <p ng-show="createForm.name.$invalid && !userForm.name.$pristine" class="help-block">Your name is required.</p>
+        </div>
+
+        <!-- phone number -->
+        <div class="form-group" ng-class="{'has-error' : createForm.phoneNumber.$invalid && !createForm.phoneNumber.$pristine}">
+          <label>Phone Number</label>
+          <input placeholder="XXXXXXXXXX" class="form-control" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber" ng-minlength="10" ng-maxlength="10">
+          <p ng-show="createForm.phoneNumber.$error.minlength" class="help-block">Your Phone Number is too short.</p>
+          <p ng-show="createForm.phoneNumber.$error.maxlength" class="help-block">Your Phone Number is too long.</p>
+        </div>
+
+        <button class="btn btn-default" ng-disabled="createForm.$invalid" type="submit">Submit</button>
       </form>
     </div>
 

@@ -27,13 +27,20 @@ angular.module("contactsApp", [])
   }
 
   this.create = function() {
-    console.log("clicked")
+    console.log("create works")
     this.contacts.unshift({
       name: this.name,
       phoneNumber: this.phoneNumber
     });
     this.reset()
   };
+
+  this.submitForm = function(isValid) {
+    if(isValid) {
+      console.log("our form is amazing");
+      this.create()
+    };
+  }
 
   this.edit = function(index) {
     this.formIsVisible = false
