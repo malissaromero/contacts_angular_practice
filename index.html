@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Contacts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
@@ -12,32 +14,50 @@
 </head>
 <body>
   <h1>Your Virtual PhoneBook</h1>
-  <p>Store your contacts, create new ones and more.</p>
+  <p>Store your contacts, create new ones and keep up to date with your stored contacts.</p>
+  <p>Favorite the special contacts.</p>
 
   <!-- create functionality-->
   <div ng-controller="mainController as mainCtrl" class="list">
     <div class="add">
       <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
-      <form ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.create()">
-        <label>Name</label>
-        <input placeholder="Enter First and Last Name" class="createInput" type="text" name="name" ng-model="mainCtrl.name">
 
         <label>Phone Number</label>
         <input placeholder="(XXX)XXX-XXXX" class="createInput" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber">
 
-        <button class="btn btn-default" type="submit">Submit</button>
+      <form name="createForm" ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.submitForm(createForm.$valid)" novalidate>
+
+        <!-- name -->
+        <div class="form-group" ng-class="{'has-error' : createForm.name.$invalid && !createForm.name.$pristine}">
+          <label>Name</label>
+          <input placeholder="Enter First and Last Name" class="form-control" type="text" name="name" ng-model="mainCtrl.name" required>
+          <p ng-show="createForm.name.$invalid && !userForm.name.$pristine" class="help-block">Your name is required.</p>
+        </div>
+
+        <!-- phone number -->
+        <div class="form-group" ng-class="{'has-error' : createForm.phoneNumber.$invalid && !createForm.phoneNumber.$pristine}">
+          <label>Phone Number</label>
+          <input placeholder="XXXXXXXXXX" class="form-control" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber" ng-minlength="10" ng-maxlength="10">
+          <p ng-show="createForm.phoneNumber.$error.minlength" class="help-block">Your Phone Number is too short.</p>
+          <p ng-show="createForm.phoneNumber.$error.maxlength" class="help-block">Your Phone Number is too long.</p>
+        </div>
+
+        <button class="btn btn-default" ng-disabled="createForm.$invalid" type="submit">Submit</button>
       </form>
     </div>
 
     <!-- edit, update and delete functionality -->
-    <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts">
+    <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts track by $index">
       <!-- | orderBy:'-name': true -->
 
       <!-- show data -->
       <div class="contacts" ng-show=!editContact>
+        <div ng-click="mainCtrl.favorite($index);" class="favorite">
+          <div class="button">
+          </div>
+        </div>
         <label ng-show="!editContact">{{contact.name}}</label>
-        <label ng-show="!editContact">{{contact.phoneNumber}}
-        </label>
+        <label ng-show="!editContact">{{contact.phoneNumber}}</label>
       </div>
 
       <!-- form for editing -->

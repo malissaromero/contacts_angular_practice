@@ -78,7 +78,7 @@ a:hover {
   padding: 25px 0 27px 25px;
 }
 
-input.createInput {
+input.form-control {
   margin-bottom: 5px;
   display: block;
   font-family: "Varela Round";
@@ -87,6 +87,62 @@ input.createInput {
   font-size: 16px;
   padding: 15px 0 15px 10px;
   width: 60%;
+}
+
+.favorite {
+  display: inline;
+  margin: 0 auto;
+  position: relative;
+}
+
+.button {
+  cursor: pointer;
+  padding: 10px 12px 8px;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  color: #aaa;
+  transition: .2s;
+}
+
+.button:hover {
+  color: #666;
+}
+
+.button:before {
+  font-family: fontawesome;
+  content: '\f004';
+  font-style: normal;
+}
+
+.button.press{
+  animation: size .4s;
+  color: #e23b3b;
+}
+
+@keyframes fade {
+  0% {
+    color: #transparent;
+  }
+  50% {
+    color: #e23b3b;
+  }
+  100% {
+    color: #transparent;
+  }
+}
+
+@keyframes size {
+  0% {
+    padding: 10px 12px 8px;
+  }
+  50% {
+    padding: 14px 16px 12px;
+    margin-top: -4px;
+  }
+  100% {
+    padding: 10px 12px 8px;
+  }
 }
 
 @media screen and (min-width: 500px) {
