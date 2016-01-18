@@ -28,7 +28,7 @@
           <!-- class="form-group" ng-class="{'has-error' : createForm.name.$invalid && !createForm.name.$pristine}" -->
           <label>Name</label>
           <input placeholder="Enter First and Last Name" class="form-control" type="text" name="name" ng-model="mainCtrl.name">
-          <!-- requirede -->
+          <!-- required -->
           <!-- <p ng-show="createForm.name.$invalid && !userForm.name.$pristine" class="help-block">Your name is required.</p> -->
         </div>
 
@@ -46,7 +46,7 @@
 
     <!-- edit, update and delete functionality -->
     <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts track by $index">
-      <!-- | orderBy:'-name': true -->
+    <!-- <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name': true track by $index"> -->
 
       <!-- show data -->
       <div class="contacts" ng-show=!editContact>
@@ -68,8 +68,8 @@
         <!-- edit, save and delete buttons -->
       <div class="actions">
         <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
-        <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
-        <a href="" class="delete" ng-click="mainCtrl.delete($index);">Delete</a>
+        <a href="" class="save" ng-click="mainCtrl.update(contact); editContact = !editContact">Save</a>
+        <a href="" class="delete" ng-click="mainCtrl.delete(contact);">Delete</a>
       </div>
     </div>
   </div>
