@@ -19,6 +19,8 @@ I know that the inputs are all linked together through ng-model which is why I f
 
 I have submitted a stack overflow issue to fix the issue because it is bugging me to no end. http://stackoverflow.com/questions/34833406/issue-with-angular-auto-populating-the-create-form-when-i-click-on-the-edit-form
 
+A short solution I created in the Firebase branch was to eliminate the create form altogether and to automatically insert a generic contact for the user to edit later.
+
 2. I also tried to apply Angular's advanced functionality and directives such as orderBy so that my contacts list can show up alphabetically, but it messes up with the hard coded data in the controller especially when deleting.
 
 <!-- <div class="item" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name': true track by $index"> -->

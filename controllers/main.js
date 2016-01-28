@@ -19,28 +19,30 @@ angular.module("contactsApp", ["firebase"])
       {"id": "5", "name":"Aaron Carter", "phoneNumber":"000-000-0000"}
     ]
 
-    this.formIsVisible = false
-    this.toggleForm = function() {
-      console.log("toggleform")
-      if(this.formIsVisible){
-        this.formIsVisible = false
-      }
-      else {
-        this.formIsVisible = true
-      }
-    }
+    // this.formIsVisible = false
+    // this.toggleForm = function() {
+    //   console.log("toggleform")
+    //   if(this.formIsVisible){
+    //     this.formIsVisible = false
+    //   }
+    //   else {
+    //     this.formIsVisible = true
+    //   }
+    // }
 
-    this.reset = function(){
+    this.reset = function() {
       this.name = ""
       this.phoneNumber = ""
     }
 
     this.create = function() {
       console.log("create works")
-      this.contacts.unshift({
-        name: this.name,
-        phoneNumber: this.phoneNumber
-      });
+      var contact = {name: "Name", phoneNumber: "XXX-XXX-XXXX"};
+      this.contacts.unshift(contact);
+        // {
+        // name: this.name,
+        // phoneNumber: this.phoneNumber
+        // }
       this.reset()
     };
 
