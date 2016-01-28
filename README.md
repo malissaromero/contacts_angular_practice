@@ -1,17 +1,17 @@
-Description
+#Description
 
 Contacts Angular Practice is a responsive, single page basic phone book app.
 The user can create contacts, edit, update, delete and update the existing contacts. It does not have a backend so the data will not persist.
 
-Technologies Used
+#Technologies Used
 
 AngularJS, Github
 
-Approach Taken
+#Approach Taken
 
 I decided with Angular because I knew I wanted to toggle my create form and I did it in Angular once before and wanted to see what else Angular can do. I followed a Treehouse tutorial and built on that. I focused on creating an app with CRUD (create, read, update, delete) functionality from the beginning even though they were bonus features. I like to practice with those four for every app I create. I had a lot of fun creating the app and want to build on it more.
 
-Challenges
+#Challenges
 
 1. The application has a bug where the input fields are auto populated when open all at once. For example, if I toggle the edit form, and then decide to create a contact while leaving the edit form open, the data in the edit form will auto populate the create inputs.
 
@@ -25,7 +25,7 @@ I have submitted a stack overflow issue to fix the issue because it is bugging m
 
 There were similar issues that other developers have met that I found online, such as passing the actual contact in the delete function instead of $index but it has not solved the issue.
 
-Bonus Functionality
+#Bonus Functionality
 
 1. Add ability to "favorite" entries
 2. Validate the Phone Number
