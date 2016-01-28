@@ -66,7 +66,7 @@ angular.module("contactsApp", [])
   //   this.reset()
   // };
 
-  this.delete = function(index) {
+  this.delete = function(index) { 
     console.log("whats up")
     this.contacts.splice(index, 1);
   };

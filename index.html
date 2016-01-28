@@ -68,8 +68,8 @@
         <!-- edit, save and delete buttons -->
       <div class="actions">
         <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
-        <a href="" class="save" ng-click="mainCtrl.update(contact); editContact = !editContact">Save</a>
-        <a href="" class="delete" ng-click="mainCtrl.delete(contact);">Delete</a>
+        <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
+        <a href="" class="delete" ng-click="mainCtrl.delete($index);">Delete</a>
       </div>
     </div>
   </div>
