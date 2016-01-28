@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module("contactsApp", ["firebase"])
-.controller("mainController", ["$scope", "$firebase",
+.controller("mainCtrl", ["$scope", "$firebase",
   function($scope, $firebase) {
 
     var url = "https://contacts-angular.firebaseio.com/";
@@ -10,7 +10,7 @@ angular.module("contactsApp", ["firebase"])
     fireRef.set({"malissa": "gorilla with glasses and pizza"})
 
 
-    this.contacts = [
+    $scope.contacts = [
       {"id": "0", "name":"Carson Daly", "phoneNumber":"000-000-0000"},
       {"id": "1", "name":"Britney Spears", "phoneNumber":"000-000-0000"},
       {"id": "2", "name":"Freddie Prince Jr", "phoneNumber":"000-000-0000"},
@@ -19,40 +19,39 @@ angular.module("contactsApp", ["firebase"])
       {"id": "5", "name":"Aaron Carter", "phoneNumber":"000-000-0000"}
     ]
 
-    this.formIsVisible = false
-    this.toggleForm = function() {
+    $scope.formIsVisible = false
+    $scope.toggleForm = function() {
       console.log("toggleform")
-      if(this.formIsVisible){
-        this.formIsVisible = false
+      if($scope.formIsVisible){
+        $scope.formIsVisible = false
       }
       else {
-        this.formIsVisible = true
+        $scope.formIsVisible = true
       }
     }
 
-    this.reset = function(){
-      this.name = ""
-      this.phoneNumber = ""
+    $scope.reset = function(){
+      $scope.contact.name = ""
+      $scope.contact.phoneNumber = ""
     }
 
-    this.create = function() {
+    $scope.create = function() {
       console.log("create works")
-      this.contacts.unshift({
-        name: this.name,
-        phoneNumber: this.phoneNumber
+      $scope.contacts.unshift({
+        name: $scope.contact.name,
+        phoneNumber: $scope.contact.phoneNumber
       });
-      this.reset()
+      $scope.reset()
     };
 
-    this.submitForm = function(isValid) {
+    $scope.submitForm = function(isValid) {
       if(isValid) {
         console.log("our form is amazing");
-        this.create()
+        $scope.create()
       };
     }
 
     this.edit = function(index) {
-      this.formIsVisible = false
       var contact = this.contacts[index];
         this.name = contact.name;
         this.phoneNumber = contact.phoneNumber;
@@ -75,9 +74,9 @@ angular.module("contactsApp", ["firebase"])
     //   this.reset()
     // };
 
-    this.delete = function(index) {
-      console.log("whats up")
-      this.contacts.splice(index, 1);
+    $scope.delete = function(index) {
+      console.log("delete")
+      $scope.contacts.splice(index, 1);
     };
 
     // this.favorited = function(index) {

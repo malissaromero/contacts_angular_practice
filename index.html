@@ -35,17 +35,17 @@
   <p>Store your contacts, create new ones and keep up to date with <br> your stored contacts and favorite the special contacts.</p>
 
   <!-- create functionality-->
-  <div ng-controller="mainController as mainCtrl" class="list">
+  <div ng-controller="mainCtrl" class="list">
     <div class="add">
-      <a href="" ng-click="mainCtrl.toggleForm()">+ Add a New Contact</a>
+      <a href="" ng-click="toggleForm()">+ Add a New Contact</a>
 
-      <form name="createForm" ng-show="mainCtrl.formIsVisible" ng-submit="mainCtrl.submitForm(createForm.$valid)" novalidate>
+      <form name="createForm" ng-show="formIsVisible" ng-submit="submitForm(createForm.$valid)" novalidate>
 
         <!-- create name -->
         <div>
           <!-- class="form-group" ng-class="{'has-error' : createForm.name.$invalid && !createForm.name.$pristine}" -->
           <label>Name</label>
-          <input placeholder="Enter First and Last Name" class="form-control" type="text" name="name" ng-model="mainCtrl.name">
+          <input placeholder="Enter First and Last Name" class="form-control" type="text" name="name" ng-model="contact.name">
           <!-- required -->
           <!-- <p ng-show="createForm.name.$invalid && !userForm.name.$pristine" class="help-block">Your name is required.</p> -->
         </div>
@@ -53,7 +53,7 @@
         <!-- create phone number -->
         <div class="form-group" ng-class="{'has-error' : createForm.phoneNumber.$invalid && !createForm.phoneNumber.$pristine}">
           <label>Phone Number</label>
-          <input placeholder="XXXXXXXXXX" class="form-control" type="text" name="phoneNumber" ng-model="mainCtrl.phoneNumber" ng-minlength="10" ng-maxlength="10">
+          <input placeholder="XXX-XXX-XXXX" class="form-control" type="text" name="phoneNumber" ng-model="contact.phoneNumber" ng-minlength="10" ng-maxlength="10">
           <p ng-show="createForm.phoneNumber.$error.minlength" class="help-block">Your Phone Number is too short.</p>
           <p ng-show="createForm.phoneNumber.$error.maxlength" class="help-block">Your Phone Number is too long.</p>
         </div>
@@ -63,12 +63,12 @@
     </div>
 
     <!-- edit, update and delete functionality -->
-    <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts track by $index">
+    <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in contacts">
     <!-- <div class="item" ng-class="{'editing-item': editContact}" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name': true track by $index"> -->
 
       <!-- show data -->
       <div class="contacts" ng-show=!editContact>
-        <div ng-click="mainCtrl.favorite($index);" class="favorite">
+        <div ng-click="favorite($index);" class="favorite">
           <div class="button">
           </div>
         </div>
@@ -78,16 +78,16 @@
 
       <!-- form for editing -->
       <form ng-show="editContact">
-        <input ng-model="mainCtrl.name" class="editing-label" type="text"/>
+        <input ng-model="contact.name" class="editing-label" type="text"/>
 
-        <input ng-model="mainCtrl.phoneNumber" class="editing-label" type="text"/>
+        <input ng-model="contact.phoneNumber" class="editing-label" type="text"/>
       </form>
 
         <!-- edit, save and delete buttons -->
       <div class="actions">
-        <a href="" class="edit" ng-click="mainCtrl.edit($index); editContact = !editContact">Edit</a>
-        <a href="" class="save" ng-click="mainCtrl.update($index); editContact = !editContact">Save</a>
-        <a href="" class="delete" ng-click="mainCtrl.delete($index);">Delete</a>
+        <a href="" class="edit" ng-click="edit($index); editContact = !editContact">Edit</a>
+        <a href="" class="save" ng-click="update($index); editContact = !editContact">Save</a>
+        <a href="" class="delete" ng-click="delete($index);">Delete</a>
       </div>
     </div>
   </div>
