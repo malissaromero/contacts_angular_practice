@@ -1,7 +1,9 @@
 #Description
 
-Contacts Angular Practice is a responsive, single page basic phone book app.
-The user can create contacts, edit, update, delete and update the existing contacts. It does not have a backend so the data will not persist.
+Contacts Angular Practice is a responsive, single page basic phone book app for a company as part of the interview process. I was asked to create a simple app with basic functionality and afterwards work on bonus functionality. The bonus functionality I completed is listed below. It does not have a backend so the data will not persist.
+
+#User Stories
+The user can create contacts, edit, update, delete and update the existing contacts. The user can favorite contacts.
 
 #Technologies Used
 
