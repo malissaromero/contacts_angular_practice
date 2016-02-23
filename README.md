@@ -13,25 +13,25 @@ I decided with Angular because I knew I wanted to toggle my create form and I di
 
 #Challenges
 
-First Challenge: The application has a bug where the input fields are auto populated when open all at once. For example, if I toggle the edit form, and then decide to create a contact while leaving the edit form open, the data in the edit form will auto populate the create inputs.
+**First Challenge:** The application has a bug where the input fields are auto populated when open all at once. For example, if I toggle the edit form, and then decide to create a contact while leaving the edit form open, the data in the edit form will auto populate the create inputs.
 
 I know that the inputs are all linked together through ng-model which is why I first looked into creating two controllers. I have tried to create two controllers to solve the issue as you will see in the try_two_controllers branch on Github but it has not solved it.
 
 I have submitted a stack overflow issue to fix the issue because it is bugging me to no end. http://stackoverflow.com/questions/34833406/issue-with-angular-auto-populating-the-create-form-when-i-click-on-the-edit-form
 
-I figured out the answer by installing ng-Inspector browser extension. I immediately saw that I wrote two controllers on the line:
+**Answer:** I figured out the answer by installing ng-Inspector browser extension. I immediately saw that I wrote two controllers on the line:
 
-> <div ng-controller="mainController as mainCtrl"> 
+``` <div ng-controller="mainController as mainCtrl"> ```
 
 I thought I was creating a shortcut. I changed the the line to:
 
-> <div ng-controller="mainCtrl">
+``` <div ng-controller="mainCtrl">```
 
 After that It worked great. I had to change my functions to reference $scope instead of this in the controller. I also had to change ng-models in the index.html file from mainCtrl.name to contact.name. After I made these changes it worked perfectly.
 
-Second Challenge: I also tried to apply Angular's advanced functionality and directives such as orderBy so that my contacts list can show up alphabetically, but it messes up with the hard coded data in the controller especially when deleting.
+**Second Challenge:** I also tried to apply Angular's advanced functionality and directives such as orderBy so that my contacts list can show up alphabetically, but it messes up with the hard coded data in the controller especially when deleting.
 
-> <div class="item" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name': true track by $index">
+``` <div class="item" ng-repeat="contact in mainCtrl.contacts | orderBy:'-name': true track by $index">```
 
 There were similar issues that other developers have met that I found online, such as passing the actual contact in the delete function instead of $index but it has not solved the issue.
 
